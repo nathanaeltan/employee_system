@@ -5,15 +5,26 @@
   <%= @employee.name %>
 </p>
 
-<h5>Chain of Command</h5>
-<% @hierarchy.each do |manager| %>
 
-  <%= manager.name %> =>
+
+<% if @hierarchy.size > 1  %>
+  <h5>Chain of Command</h5>
+  
+       <% @hierarchy.each_with_index do |manager, i| %>
+
+      <% if i == @hierarchy.size - 1 %>
+        <%= manager.name %>
+        <% else %>
+        <%= manager.name %> =>
+      <% end %>
+       
+    <% end %>
+   
 <% end %>
-<p>
-  <strong>Manager:</strong>
-  <%= @employee.manager_id %> 
-</p>
+
+
+
+<br>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>
