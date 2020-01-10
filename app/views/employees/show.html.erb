@@ -5,11 +5,14 @@
   <%= @employee.name %>
 </p>
 
+<h5>Chain of Command</h5>
+<% @hierarchy.each do |manager| %>
 
-
+  <%= manager.name %> =>
+<% end %>
 <p>
   <strong>Manager:</strong>
-  <%= @employee.manager_id %>
+  <%= @employee.manager_id %> 
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |

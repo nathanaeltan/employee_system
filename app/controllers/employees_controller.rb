@@ -13,14 +13,15 @@ class EmployeesController < ApplicationController
     @hierarchy = Employee.find_by_sql("
       WITH RECURSIVE EmployeeCTE AS (
 
-        SELECT id, name, manager_id FROM employees where id = #{params[:id]}
+        SELECT id, name, manager_id FROM employees 
+        where id = #{params[:id]}
         UNION 
         SELECT employees.id, employees.name, employees.manager_id
-         FROM employees JOIN EmployeeCTE
+        FROM employees JOIN EmployeeCTE
         On employees.id = EmployeeCTE.manager_id
       )
 
-      SELECT * from EmployeeCTE
+        SELECT * from EmployeeCTE
       
     ")
     puts @hierarchy[0].name
