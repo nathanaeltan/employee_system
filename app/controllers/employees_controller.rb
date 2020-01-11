@@ -20,21 +20,17 @@ class EmployeesController < ApplicationController
         FROM employees JOIN EmployeeCTE
         On employees.id = EmployeeCTE.manager_id
       )
-
         SELECT * from EmployeeCTE
-      
+     
     ")
-    puts @hierarchy[0].name
-   
-
-
   
-   
   end
 
   # GET /employees/new
   def new
     @employee = Employee.new
+    @list = Employee.all
+    puts @list
   end
 
   # GET /employees/1/edit

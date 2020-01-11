@@ -17,11 +17,11 @@
   </div>
 
  
-
-  <div class="field">
-    <%= form.label :manager_id %>
-    <%= form.number_field :manager_id %>
-  </div>
+<div class="field">
+<%= form.label :Manager %>
+<%= form.select "manager_id", Employee.all.collect {|x| [x.name, x.id]}, include_blank: true %>
+</div>
+  
 
   <div class="actions">
     <%= form.submit %>

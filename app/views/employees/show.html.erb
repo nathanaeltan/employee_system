@@ -10,16 +10,14 @@
 <% if @hierarchy.size > 1  %>
   <h5>Chain of Command</h5>
   
-       <% @hierarchy.each_with_index do |manager, i| %>
+  <% @hierarchy.each_with_index do |manager, i| %>
 
-      <% if i == @hierarchy.size - 1 %>
+    <% if i == @hierarchy.size - 1 %>
         <%= manager.name %>
         <% else %>
         <%= manager.name %> =>
       <% end %>
-       
     <% end %>
-   
 <% end %>
 
 
